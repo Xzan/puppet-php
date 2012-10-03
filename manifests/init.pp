@@ -18,9 +18,9 @@ class php{
 		notify => Exec["apc-rfc1867"]
 	}
 	
-	Exec {"apc-rfc1867" :
-		command => "echo 'apc.rfc1867 = 1' >> /etc/php5/conf.d/apc.ini"
-		unless => "cat /etc/php5/conf.d/apc.ini | grep -e 'apc.rfc1867 \?= \?1'";
+	exec {"apc-rfc1867" :
+		command => "echo 'apc.rfc1867 = 1' >> /etc/php5/conf.d/apc.ini",
+		unless => "cat /etc/php5/conf.d/apc.ini | grep -e 'apc.rfc1867 \?= \?1'",
 		notify => Service["apache2"]
 	}
 
